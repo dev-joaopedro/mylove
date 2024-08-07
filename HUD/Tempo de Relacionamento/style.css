@@ -1,0 +1,83 @@
+.contador-tempo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.foto-container {
+  width: 50%;
+  margin: 40px auto;
+  aspect-ratio: auto; /* Proporção 16:9 para fotos horizontais */
+  overflow: hidden; /* Oculta o excesso da imagem */
+}
+
+.foto-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.texto-container {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.texto-container p {
+  font-size: 24px; /* Tamanho da fonte */
+  font-family: Arial, sans-serif; /* Fonte */
+  color: #fff; /* Cor do texto */
+}
+
+.calendario{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+.calendario tbody{
+  text-align: center;
+  color: #CCC;
+}
+.calendario thead{
+  font-size: 0.5em;
+  font-weight: 700;
+}
+.calendario .marcado{
+  color: #FFF;
+  background-color: #36D1DC;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.pop-up{
+  display: none;
+  position: absolute;
+  background-color: #FFF;
+  z-index: 500;
+  border-radius: 20px;
+  box-shadow: 1px 2px 3px grey;
+  padding: 30px 20px 20px 20px;
+  margin: auto;
+  right: 0;
+  left: 0;
+  width: 90%;
+  max-width: 500px;
+  top: 20%;
+}
+.pop-up h1, .pop-up button{
+  text-align: center;
+}
+
+body {
+  font-size: 18px; /* Tamanho da fonte */
+  font-family: 'Courier New', Courier, monospace, Helvetica, sans-serif; /* Fonte */
+  background-color: #f0ede4; /* Fundo preto */
+  color: #000000; /* Cor do texto */
+}
+#foto {
+  display: block;
+  margin: 0 auto;
+}
+.juntos {
+  margin-right: px;
+}
