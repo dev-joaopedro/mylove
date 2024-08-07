@@ -85,8 +85,20 @@ body {
   display: block; /* torna a imagem um bloco */
 }
 
-@media (max-width: 768px) {
+/* style.css */
+
+/* Estilo para PC */
+@media (min-width: 768px) {
   #foto {
-    width: 90%; /* ajuste o tamanho da imagem para telas menores */
+    width: 50%; /* Ajuste o tamanho da imagem para 50% da largura da tela */
+    margin: 0 auto; /* Centralize a imagem */
+  }
+}
+
+/* Estilo para dispositivos móveis */
+@media (max-width: 767px) {
+  #foto {
+    width: 100%; /* Ajuste o tamanho da imagem para 100% da largura da tela */
+    margin: 0 auto; /* Centralize a imagem */
   }
 }
