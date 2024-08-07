@@ -80,7 +80,7 @@ body {
 #foto {
   width: 100%;
   height: auto;
-  max-width: 800px; /* ajuste o tamanho máximo da imagem */
+  max-width: auto; /* ajuste o tamanho máximo da imagem */
   margin: 0 auto; /* centraliza a imagem */
   display: block; /* torna a imagem um bloco */
 }
