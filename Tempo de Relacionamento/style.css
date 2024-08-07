@@ -74,10 +74,19 @@ body {
   background-color: #f0ede4; /* Fundo preto */
   color: #000000; /* Cor do texto */
 }
-#foto {
-  display: block;
-  margin: 0 auto;
-}
 .juntos {
   margin-right: px;
+}
+#foto {
+  width: 100%;
+  height: auto;
+  max-width: 800px; /* ajuste o tamanho máximo da imagem */
+  margin: 0 auto; /* centraliza a imagem */
+  display: block; /* torna a imagem um bloco */
+}
+
+@media (max-width: 768px) {
+  #foto {
+    width: 90%; /* ajuste o tamanho da imagem para telas menores */
+  }
 }
