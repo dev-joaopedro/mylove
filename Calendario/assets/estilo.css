@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    transition: 3000ms linear;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        max-width: 800px; /* ajuste o valor de acordo com a largura desejada */
+        margin: 20px auto;
+        background-color: #f0ede4;
+}
+
+.container{
+    transition: 1000ms;
+}
+
+
+h1, h2, h3, button, a{
+    font-family: 'Comic Neue', cursive;
+}
+
+h1, h2, h3{
+    font-weight: 700;
+}
+
+.invisivel{
+    display: none;
+}
+.visivel{
+    display: block;
+}
+
+.letra2{
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.7em;
+    font-weight: 400;
+    padding: auto 30px auto 30px;
+}
+
+.letra-vermelha{
+    background: -webkit-linear-gradient(#ccaa76, #ccaa76);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fundo1, .fundo2, .fundo3, .fundo4, .fundo5, .fundo6, .fundo7{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.calendario{
+    height: center;
+    width: center;
+    border-collapse: separate;
+    border-spacing: 10px;
+    max-width: 800px; /* ajuste o valor de acordo com a largura desejada */
+    margin: 20px auto;
+    text-align: center;
+}
+.calendario tbody{
+    height: center;
+    width: center;
+    text-align: center;
+    color: #0a0a0a;
+}
+.calendario thead{
+    font-size: 1em;
+    font-weight: 700;
+}
+.calendario .marcado{
+    color: #FFF;
+    background-color: #ccaa76;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.pop-up{
+    display: none;
+    position: absolute;
+    background-color: #f0ede4;
+    z-index: 500;
+    border-radius: 20px;
+    box-shadow: 1px 2px 3px grey;
+    padding: 30px 20px 20px 20px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: 90%;
+    max-width: 500px;
+    top: 20%;
+}
+.pop-up h1, .pop-up button{
+    text-align: center;
+}
+   .btn-azul {background-image: linear-gradient(to right, #ccaa76 0%, #ccaa76  51%, #36D1DC  100%)}
+   .btn-azul {
+      margin: 10px;
+      padding: 15px 45px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: #000000;            
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+      border: none
+    }
