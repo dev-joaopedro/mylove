@@ -1,7 +1,4 @@
-confirm("Are you sure you want to delete?")
-$(document).ready(function(){
-
-    $(".mudaTela").click(function(){
+     $(".mudaTela").click(function(){
         mudaTela( $(this), $(this).attr("nova"), $(this).attr("animacao"), $(this).attr("tempoAnimacao") );
     });
 
@@ -99,10 +96,6 @@ $(document).ready(function(){
         mostraPopUp(true, titulo, mensagem);
         telaFinal = (texto=="final"?true:false);
     }
-
-    
-
-});
 
 let telaFinal = false;
 
