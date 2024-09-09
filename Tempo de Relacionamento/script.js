@@ -1,47 +1,46 @@
 
 // Data de início do relacionamento
-const dataInicio = new Date(2024,5,9);
-
-// Índice da foto atual
-let indiceFoto = 0;
-
-// Índice do texto atual
-let indiceTexto = 0;
+const dataInicio = new Date(2024,5,10);
 
 // Função para calcular o tempo do relacionamento
-function calcularTempo() {
+  function calcularTempo() {
     const dataAtual = new Date();
     const tempo = dataAtual.getTime() - dataInicio.getTime();
-  
-    const anos = Math.floor(tempo / (1000 * 60 * 60 * 24 * 365.25)); // considera anos bissextos
-    const meses = Math.floor((tempo % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * getDiasNoMes(dataInicio.getMonth(), dataInicio.getFullYear())));
-    const dias = Math.floor((tempo % (1000 * 60 * 60 * 24 * getDiasNoMes(dataInicio.getMonth(), dataInicio.getFullYear()))) / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((tempo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((tempo % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((tempo % (1000 * 60)) / 1000);
-  
-    return `${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
-  }
+    const segundos = Math.floor(tempo / 1000);
+    const minutos = Math.floor(segundos / 60);
+    const horas = Math.floor(minutos / 60);
+    const dias = Math.floor(horas / 24);
+    const meses = Math.floor(dias / getDiasNoMes(new Date().getMonth(), new Date().getFullYear()));
+    const anos = Math.floor(meses / 12);
+
+    return `${anos} anos, ${meses % 12} meses, ${dias % getDiasNoMes(new Date().getMonth(), new Date().getFullYear())} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos`;
+}
   
   function getDiasNoMes(mes, ano) {
     switch (mes) {
       case 0: // janeiro
-      case 2: // março
-      case 4: // maio
-      case 6: // julho
-        return 31;
-      case 7: // agosto
-        return 31;
-      case 9: // outubro
-      case 11: // dezembro
-        return 31;
-      case 3: // abril
-      case 5: // junho
-        return 30;
-      case 8: // setembro
-      case 10: // novembro
-        return 30;
+      return 31;
       case 1: // fevereiro
+      return 29;
+      case 2: // março
+      return 31;
+      case 3: // abril
+      return 30;
+      case 4: // maio
+      return 31;
+      case 5: // junho
+      return 30;
+      case 6: // julho
+      return 31;
+      case 7: // agosto
+      return 31;
+      case 8: // setembro
+      return 30;
+      case 9: // outubro
+      return 31;
+      case 10: // novembro
+      return 30;
+      case 11: // dezembro
         if (ano % 4 === 0 && (ano % 100 !== 0 || ano % 400 === 0)) {
           return 29; // ano bissexto
         } else {
@@ -51,35 +50,6 @@ function calcularTempo() {
         throw new Error(`Mês inválido: ${mes}`);
     }
   }
-
-// Função para mudar a foto
-function mudarFoto() {
-    // Esconder a foto anterior
-    document.getElementById('foto').classList.add('esconder');
-
-    // Aguardar 1 segundo antes de mostrar a nova foto
-    setTimeout(() => {
-        // Mostrar a nova foto
-        document.getElementById('foto').src = fotos[indiceFoto];
-        document.getElementById('foto').classList.remove('esconder');
-        indiceFoto = (indiceFoto + 1) % fotos.length;
-
-        // Agendar a próxima mudança de foto
-        setTimeout(mudarFoto, 5000);
-    }, 1000);
-}
-
-// Função para mudar o texto
-function mudarTexto() {
-    document.getElementById('texto').innerHTML = textos[indiceTexto];
-    indiceTexto = (indiceTexto + 1) % textos.length;
-}
-
-// Iniciar a mudança de foto
-mudarFoto();
-
-// Intervalo para mudar o texto a cada 10 segundos
-setInterval(mudarTexto, 10000);
 
 // Intervalo para atualizar o contador de tempo a cada segundo
 setInterval(() => {
