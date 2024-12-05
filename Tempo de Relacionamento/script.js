@@ -1,57 +1,38 @@
-
 // Data de início do relacionamento
-const dataInicio = new Date(2024,5,10);
+const dataInicio = new Date(2024, 5, 8); // Representa 8 de junho de 2024 (mês indexado em 0, então 5 é junho).
 
 // Função para calcular o tempo do relacionamento
-  function calcularTempo() {
-    const dataAtual = new Date();
-    const tempo = dataAtual.getTime() - dataInicio.getTime();
-    const segundos = Math.floor(tempo / 1000);
-    const minutos = Math.floor(segundos / 60);
-    const horas = Math.floor(minutos / 60);
-    const dias = Math.floor(horas / 24);
-    const meses = Math.floor(dias / getDiasNoMes(new Date().getMonth(), new Date().getFullYear()));
-    const anos = Math.floor(meses / 12);
+function calcularTempo() {
+    const dataAtual = new Date(); // Obtém a data e hora atuais.
 
-    return `${anos} anos, ${meses % 12} meses, ${dias % getDiasNoMes(new Date().getMonth(), new Date().getFullYear())} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos`;
-}
-  
-  function getDiasNoMes(mes, ano) {
-    switch (mes) {
-      case 0: // janeiro
-      return 31;
-      case 1: // fevereiro
-      return 29;
-      case 2: // março
-      return 31;
-      case 3: // abril
-      return 30;
-      case 4: // maio
-      return 31;
-      case 5: // junho
-      return 30;
-      case 6: // julho
-      return 31;
-      case 7: // agosto
-      return 31;
-      case 8: // setembro
-      return 30;
-      case 9: // outubro
-      return 31;
-      case 10: // novembro
-      return 30;
-      case 11: // dezembro
-        if (ano % 4 === 0 && (ano % 100 !== 0 || ano % 400 === 0)) {
-          return 29; // ano bissexto
-        } else {
-          return 28;
-        }
-      default:
-        throw new Error(`Mês inválido: ${mes}`);
+    // Calcula os anos, meses e dias diretamente usando um objeto temporário
+    let anos = dataAtual.getFullYear() - dataInicio.getFullYear();
+    let meses = dataAtual.getMonth() - dataInicio.getMonth();
+    let dias = dataAtual.getDate() - dataInicio.getDate();
+
+    // Ajusta os meses e anos se necessário
+    if (dias < 0) {
+        meses--; // Se os dias são negativos, retira 1 mês.
+        const ultimoDiaMesAnterior = new Date(dataAtual.getFullYear(), dataAtual.getMonth(), 0).getDate(); // Obtém o último dia do mês anterior.
+        dias += ultimoDiaMesAnterior; // Ajusta os dias somando os dias do mês anterior.
     }
-  }
+    if (meses < 0) {
+        anos--; // Se os meses são negativos, retira 1 ano.
+        meses += 12; // Ajusta os meses adicionando 12.
+    }
+
+    // Calcula a diferença em horas, minutos e segundos
+    const diferencaMilissegundos = dataAtual - new Date(dataInicio.getFullYear() + anos, dataInicio.getMonth() + meses, dataInicio.getDate());
+    const horas = Math.floor(diferencaMilissegundos / (1000 * 60 * 60)) % 24;
+    const minutos = Math.floor(diferencaMilissegundos / (1000 * 60)) % 60;
+    const segundos = Math.floor(diferencaMilissegundos / 1000) % 60;
+
+    // Retorna uma string formatada com a duração do relacionamento
+    return `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+}
 
 // Intervalo para atualizar o contador de tempo a cada segundo
-setInterval(() => {
+setInterval(() => { 
+    // Atualiza o conteúdo do elemento com id 'contador-tempo' com o cálculo do tempo do relacionamento.
     document.getElementById('contador-tempo').innerHTML = `Juntos há ${calcularTempo()}`;
-}, 1000);
+}, 1000); // Define o intervalo de atualização para 1 segundo (1000 milissegundos).
